@@ -13,6 +13,7 @@
           <th>Id</th>
           <th>Nome</th>
           <th>Url</th>
+          <th> </th>
         </tr>
       </thead>
 
@@ -21,6 +22,11 @@
           <td>{{ categoria.id }}</td>
           <td>{{ categoria.name }}</td>
           <td>{{ categoria.urlHandle }}</td>
+          <td>
+            <a href="" class="btn btn-light" [routerLink]="['/admin/categorias', categoria.id]">
+              <span class="material-symbols-outlined">edit</span>
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

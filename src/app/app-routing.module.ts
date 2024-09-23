@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriasListaComponent } from './features/categorias/categorias-lista/categorias-lista.component';
 import { AddCategoriasComponent } from './features/categorias/add-categorias/add-categorias.component';
+import { EditCategoriasComponent } from './features/categorias/edit-categorias/edit-categorias.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'admin/categorias/add',
     component: AddCategoriasComponent
+  },
+  {
+    path: 'admin/categorias/:id',
+    component: EditCategoriasComponent
   }
 ];
 

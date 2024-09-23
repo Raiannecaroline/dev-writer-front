@@ -1,8 +1,8 @@
+import { Categorias } from './../models/categorias.model';
 import { Injectable } from '@angular/core';
 import { AddCategoriasRequest } from '../models/add-categorias-request.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Categorias } from '../models/categorias.model';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -20,6 +20,10 @@ export class CategoriasService {
 
   getAllCategorias(): Observable<Categorias[]> {
     return this.http.get<Categorias[]>(`${environment.apiBaseUrl}/api/categories`);
+  }
+
+  getCategoriasById(id: string): Observable<Categorias> {
+    return this.http.get<Categorias>(`${environment.apiBaseUrl}/api/categories/${id}`);
   }
 
 }
