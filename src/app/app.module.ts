@@ -1,3 +1,4 @@
+import { AddBlogPost } from './features/blog-post/models/add-blog-post.model';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -10,6 +11,8 @@ import { AddCategoriasComponent } from './features/categorias/add-categorias/add
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoriasComponent } from './features/categorias/edit-categorias/edit-categorias.component';
+import { BlogPostListaComponent } from './features/blog-post/blog-post-lista/blog-post-lista.component';
+import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blog-post.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { EditCategoriasComponent } from './features/categorias/edit-categorias/e
     NavBarComponent,
     CategoriasListaComponent,
     AddCategoriasComponent,
-    EditCategoriasComponent
+    EditCategoriasComponent,
+    BlogPostListaComponent,
+    AddBlogPostComponent
   ],
   imports: [
     BrowserModule,
