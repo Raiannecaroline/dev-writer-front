@@ -1,27 +1,76 @@
-# DevWriter
+# Dev Writer - EM CONSTRUÇÃO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+Bem-vindo ao repositório do **Dev Writer**! Este projeto consiste em um blog desenvolvido utilizando **Angular**. O objetivo é oferecer uma plataforma onde desenvolvedores possam compartilhar artigos e experiências relacionadas ao desenvolvimento de software.
 
-## Development server
+## Visão Geral
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O **Dev Writer** permite que os usuários possam navegar por diversos artigos, acessar conteúdos relevantes e publicar seus próprios textos. A aplicação segue boas práticas de desenvolvimento com uma interface amigável e de fácil navegação.
 
-## Code scaffolding
+### Funcionalidades Principais
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Visualização de Posts**: Navegue por diferentes posts publicados no blog.
+- **Criação e Edição de Posts**: Autores podem criar novos posts ou editar seus artigos já publicados.
+- **Autenticação e Autorização**: Os usuários podem se cadastrar, fazer login e gerenciar suas postagens.
+- **Sistema de Comentários**: Interaja com outros usuários por meio de comentários em artigos.
+- **Paginação e Filtros**: Facilidade de navegação pelos artigos com a ajuda de filtros e paginação.
 
-## Build
+## Tecnologias Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **[Angular](https://angular.io/)**: Framework principal utilizado para a construção da interface do usuário.
+- **[TypeScript](https://www.typescriptlang.org/)**: Linguagem usada para adicionar tipagem estática ao JavaScript.
+- **[HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5)**: Linguagem de marcação para estruturar as páginas do blog.
+- **[CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)**: Usado para estilizar as páginas da aplicação.
+- **[Node.js](https://nodejs.org/)**: Utilizado para o ambiente de desenvolvimento.
 
-## Running unit tests
+## Instalação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clone o repositório**:
 
-## Running end-to-end tests
+   ```bash
+   git clone https://github.com/Raiannecaroline/dev-writer-front.git
+2. **Acesse a pasta do projeto**, instale as dependências, inicie o servidor de desenvolvimento e acesse o projeto no navegador:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   cd dev-writer-front
+   npm install
+   ng serve
 
-## Further help
+3. **Abre o navegador e acesse o link**:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```bash
+   http://localhost:4200/
+
+
+4. **Estrutura das Pastas**:
+
+  ```shell
+    dev-writer-front/
+    ├── src/
+    │   ├── app/
+    │   │   ├── components/
+    │   │   ├── services/
+    │   │   ├── models/
+    │   ├── assets/
+    │   ├── environments/
+    ├── angular.json
+    ├── package.json
+    ├── README.md
+  ```
+
+5. **Como Contribuir:**
+
+ - Faça um fork deste repositório; 
+ - Crie uma branch com sua feature; 
+ - Comite suas mudanças;
+ - Faça um push para a branch;
+ - Abra um Pull Request;
+
+ Comandos abaixo:
+
+   ```bash
+   git checkout -b minha-feature
+   git commit -m 'Adiciona minha feature'
+   git push origin minha-feature
+  ```
+
+Desenvolvido por [Raiannecaroline](https://github.com/Raiannecaroline)
