@@ -1,3 +1,5 @@
+import { Categorias } from './../../categorias/models/categorias.model';
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -8,4 +10,5 @@ export interface BlogPost {
   publishAt: Date;
   authorAt: string;
   isVisible: boolean;
+  categorias: Categorias[];
 }

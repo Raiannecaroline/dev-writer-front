@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { BlogPostService } from '../services/blog-post.service';
 import { Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
@@ -15,7 +15,7 @@ export class BlogPostListaComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private blogPostService: BlogPostService
+    @Inject(BlogPostService) private blogPostService: BlogPostService
   ) {}
 
   ngOnInit(): void {

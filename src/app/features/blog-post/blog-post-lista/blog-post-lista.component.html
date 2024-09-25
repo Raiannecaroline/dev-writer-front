@@ -13,13 +13,23 @@
           <th>Título</th>
           <th>Breve Descrição</th>
           <th>É visivel?</th>
+          <th>Categorias</th>
         </tr>
       </thead>
 
-      <tbody *ngFor="let blogPost of blogPosts">
-        <td>{{ blogPost.title }}</td>
-        <td>{{ blogPost.content }}</td>
-        <td>{{ blogPost.isVisible }}</td>
+      <tbody>
+        <tr *ngFor="let blogPost of blogPosts">
+          <td>{{ blogPost.title }}</td>
+          <td>{{ blogPost.content }}</td>
+          <td>{{ blogPost.isVisible }}</td>
+
+          <td>
+            <span *ngFor="let categoria of blogPost.categorias">
+              <span class="badge bg-secondary me-2">{{ blogPost.categorias }}</span>
+            </span>
+          </td>
+        </tr>
+
       </tbody>
     </table>
   </ng-container>
