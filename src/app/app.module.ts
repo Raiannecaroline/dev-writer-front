@@ -1,4 +1,3 @@
-import { AddBlogPost } from './features/blog-post/models/add-blog-post.model';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -13,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditCategoriasComponent } from './features/categorias/edit-categorias/edit-categorias.component';
 import { BlogPostListaComponent } from './features/blog-post/blog-post-lista/blog-post-lista.component';
 import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blog-post.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blo
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
