@@ -93,12 +93,12 @@
       </div>
 
       <div class="mt-3">
-        <label for="categorias" class="form-label">Categorias</label>
+        <label for="categories" class="form-label">Categorias</label>
 
-        <ng-container *ngIf="categorias$ | async as categorias">
-          <select class="form-control" [(ngModel)]="model.categorias" name="categorias" id="categorias" multiple>
-            <option *ngFor="let categoria of categorias" [value]="categoria.id">
-              {{ categoria.name }}
+        <ng-container *ngIf="categorias$ | async as categories">
+          <select class="form-control" [(ngModel)]="model.categories" name="categories" id="categories" multiple>
+            <option *ngFor="let categorie of categories" [value]="categorie.id">
+              {{ categorie.name }}
             </option>
           </select>
         </ng-container>
