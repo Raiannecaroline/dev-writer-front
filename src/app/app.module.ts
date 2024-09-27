@@ -13,6 +13,7 @@ import { EditCategoriasComponent } from './features/categorias/edit-categorias/e
 import { BlogPostListaComponent } from './features/blog-post/blog-post-lista/blog-post-lista.component';
 import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blog-post.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { EditBlogPostComponent } from './features/blog-post/edit-blog-post/edit-blog-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MarkdownModule } from 'ngx-markdown';
     AddCategoriasComponent,
     EditCategoriasComponent,
     BlogPostListaComponent,
-    AddBlogPostComponent
+    AddBlogPostComponent,
+    EditBlogPostComponent
   ],
   imports: [
     BrowserModule,

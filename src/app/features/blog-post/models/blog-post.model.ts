@@ -10,5 +10,5 @@ export interface BlogPost {
   publishAt: Date;
   authorAt: string;
   isVisible: boolean;
-  categorias: Categorias[];
+  categories: Categorias[];
 }

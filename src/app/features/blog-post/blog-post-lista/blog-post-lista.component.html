@@ -14,19 +14,25 @@
           <th>Breve Descrição</th>
           <th>É visivel?</th>
           <th>Categorias</th>
+          <th>Editar</th>
         </tr>
       </thead>
 
       <tbody>
         <tr *ngFor="let blogPost of blogPosts">
           <td>{{ blogPost.title }}</td>
-          <td>{{ blogPost.content }}</td>
+          <td>{{ blogPost.description }}</td>
           <td>{{ blogPost.isVisible }}</td>
 
           <td>
-            <span *ngFor="let categoria of blogPost.categorias">
-              <span class="badge bg-secondary me-2">{{ blogPost.categorias }}</span>
+            <span *ngFor="let categorie of blogPost.categories">
+              <span class="badge bg-secondary me-2">{{ blogPost.categories }}</span>
             </span>
+          </td>
+          <td>
+            <a class="btn btn-light" [routerLink]="['/admin/blogPost', blogPost.id]">
+              <span class="material-symbols-outlined">edit</span>
+            </a>
           </td>
         </tr>
 
