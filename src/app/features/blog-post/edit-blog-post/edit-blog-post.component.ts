@@ -18,11 +18,13 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   model?: BlogPost;
   categorias$?: Observable<Categorias[]>
   selectCategorias?: string[];
+  isImagemSelectorVisible : boolean = false;
 
   routeSubscription?: Subscription;
   updatePostSubscription?: Subscription;
   getPostSubscription?: Subscription;
   deletePostSubscription?: Subscription;
+  imagemSelectSubscricption?: Subscription;
 
 
   constructor(
@@ -86,11 +88,20 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
     }
   }
 
+  openImagemSelector(): void {
+    this.isImagemSelectorVisible = true;
+  }
+
+  closeImagemSelector(): void {
+    this.isImagemSelectorVisible = false;
+  }
+
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
     this.updatePostSubscription?.unsubscribe();
     this.getPostSubscription?.unsubscribe();
     this.deletePostSubscription?.unsubscribe();
+    this.imagemSelectSubscricption?.unsubscribe();
   }
 
 }

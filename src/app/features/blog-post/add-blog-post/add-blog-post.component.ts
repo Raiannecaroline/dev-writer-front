@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ImagemService } from './../../../shared/components/imagem-selector/imagem.service';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
 import { BlogPostService } from '../services/blog-post.service';
 import { Router } from '@angular/router';
 import { CategoriasService } from '../../categorias/services/categorias.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Categorias } from '../../categorias/models/categorias.model';
 
 @Component({
@@ -11,16 +12,20 @@ import { Categorias } from '../../categorias/models/categorias.model';
   templateUrl: './add-blog-post.component.html',
   styleUrls: ['./add-blog-post.component.css']
 })
-export class AddBlogPostComponent implements OnInit {
+export class AddBlogPostComponent implements OnInit, OnDestroy {
 
   model: AddBlogPost;
+  isImagemSelectorVisible : boolean = false;
 
   categorias$?: Observable<Categorias[]>
+
+  imagemSelectSubscricption?: Subscription;
 
   constructor(
     @Inject(BlogPostService) private blogPostService: BlogPostService,
     private router: Router,
-    private categoriasService: CategoriasService
+    private categoriasService: CategoriasService,
+    private imagemService: ImagemService
   ) {
     this.model = {
       title: '',
@@ -37,6 +42,13 @@ export class AddBlogPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.categorias$ = this.categoriasService.getAllCategorias();
+
+    this.imagemSelectSubscricption = this.imagemService.onSelectImagem().subscribe({
+      next: (selectorImagem) => {
+        this.model.ulHandler = selectorImagem.url;
+        this.closeImagemSelector();
+      }
+    })
   }
 
   onFormEnviar(): void {
@@ -47,5 +59,18 @@ export class AddBlogPostComponent implements OnInit {
           this.router.navigateByUrl('/admin/blogPost');
         }
       });
+  }
+
+
+  openImagemSelector(): void {
+    this.isImagemSelectorVisible = true;
+  }
+
+  closeImagemSelector(): void {
+    this.isImagemSelectorVisible = false;
+  }
+
+  ngOnDestroy(): void {
+    this.imagemSelectSubscricption?.unsubscribe();
   }
 }

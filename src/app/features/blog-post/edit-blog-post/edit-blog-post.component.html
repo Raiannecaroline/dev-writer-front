@@ -118,3 +118,9 @@
 
   </ng-container>
 </div>
+
+
+<div class="images-container-modal" [ngClass]="{'d-block': isImagemSelectorVisible, 'd-none': !isImagemSelectorVisible}">
+  <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px" (click)="closeImagemSelector()">X</button>
+  <app-imagem-selector></app-imagem-selector>
+</div>
