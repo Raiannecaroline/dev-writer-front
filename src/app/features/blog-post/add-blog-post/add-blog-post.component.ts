@@ -41,6 +41,7 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.restoreFormData();
     this.categorias$ = this.categoriasService.getAllCategorias();
 
     this.imagemSelectSubscricption = this.imagemService.onSelectImagem().subscribe({
@@ -72,5 +73,16 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.imagemSelectSubscricption?.unsubscribe();
+  }
+
+  saveFormData(): void {
+    localStorage.setItem('addBlogPostData', JSON.stringify(this.model))
+  }
+
+  restoreFormData(): void {
+    const savedData = localStorage.getItem('addBlogPostData');
+    if (savedData) {
+      this.model = JSON.parse(savedData);
+    }
   }
 }

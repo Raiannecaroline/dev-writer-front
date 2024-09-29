@@ -8,13 +8,15 @@
       <div class="mt-3">
         <label class="form-label">Nome da Categoria</label>
         <input type="text" id="nomeCategoria" class="form-control"
-        name="nomeCategoria" [(ngModel)]="model.name">
+        name="nomeCategoria" [(ngModel)]="model.name"
+        (ngModelChange)="saveFormData()">
       </div>
 
       <div class="mt-3">
         <label class="form-label">URL da Categoria</label>
         <input type="text" id="categoriaUrl" class="form-control"
-        name="categoriaUrl" [(ngModel)]="model.urlHandle">
+        name="categoriaUrl" [(ngModel)]="model.urlHandle"
+        (ngModelChange)="saveFormData()">
       </div>
 
       <div class="mt-3">
