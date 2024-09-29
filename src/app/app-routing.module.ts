@@ -7,8 +7,13 @@ import { EditCategoriasComponent } from './features/categorias/edit-categorias/e
 import { BlogPostListaComponent } from './features/blog-post/blog-post-lista/blog-post-lista.component';
 import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blog-post.component';
 import { EditBlogPostComponent } from './features/blog-post/edit-blog-post/edit-blog-post.component';
+import { HomeComponent } from './features/public/home/home.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'admin/categorias',
     component: CategoriasListaComponent
