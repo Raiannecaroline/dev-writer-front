@@ -15,7 +15,7 @@ export class ImagemSelectorComponent {
   title: string = '';
   imagens$?: Observable<BlogImagem[]>;
 
-  @ViewChild('form', { static: false}) imageUploadForm?: NgForm;
+  @ViewChild('form', { static: false}) imagemUploadForm?: NgForm;
 
   constructor(private imagemService: ImagemService) {
 
@@ -35,7 +35,7 @@ export class ImagemSelectorComponent {
       this.imagemService.uploadImagem(this.file, this.fileName, this.title)
       .subscribe({
         next: (response) => {
-          this.imageUploadForm?.resetForm();
+          this.imagemUploadForm?.resetForm();
           this.getImagens();
         }
       });

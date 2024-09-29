@@ -52,7 +52,9 @@
         </div>
 
         <div class="mt-3">
-          <label for="ulHandler" class="form-label">Imagem Post</label>
+          <label for="ulHandler" class="form-label">Imagem Post
+            <button type="button" class="btn btn-light" (click)="openImagemSelector()">Selecionar Imagem</button>
+          </label>
 
           <ng-container *ngIf="model.ulHandler !== ''">
             <div>
@@ -119,8 +121,7 @@
   </ng-container>
 </div>
 
-
-<div class="images-container-modal" [ngClass]="{'d-block': isImagemSelectorVisible, 'd-none': !isImagemSelectorVisible}">
+<div class="imagens-container-modal" [ngClass]="{'d-block': isImagemSelectorVisible, 'd-none': !isImagemSelectorVisible}">
   <button type="button" class="btn btn-light" style="position: fixed; top: 10px;right: 10px" (click)="closeImagemSelector()">X</button>
   <app-imagem-selector></app-imagem-selector>
 </div>

@@ -6,6 +6,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { CategoriasService } from '../../categorias/services/categorias.service';
 import { Categorias } from '../../categorias/models/categorias.model';
 import { UpdatePost } from '../models/update-blog-post.model';
+import { ImagemService } from 'src/app/shared/components/imagem-selector/imagem.service';
 
 @Component({
   selector: 'app-edit-blog-post',
@@ -31,7 +32,8 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private blogPostService: BlogPostService,
     private categoriasService: CategoriasService,
-    private router: Router
+    private router: Router,
+    private imagemService: ImagemService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +51,17 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
             }
           });
         }
+
+        this.imagemSelectSubscricption = this.imagemService.onSelectImagem()
+        .subscribe({
+          next: (response) => {
+            if (this.model) {
+              this.model.ulHandler = response.url;
+              this.isImagemSelectorVisible = false;
+            }
+            console.log(this.model)
+          }
+        })
       }
     })
   }

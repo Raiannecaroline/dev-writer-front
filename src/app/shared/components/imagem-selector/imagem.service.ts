@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ImagemService {
 
-  selectedImage: BehaviorSubject<BlogImagem> = new BehaviorSubject<BlogImagem>({
+  imagemSelecionada: BehaviorSubject<BlogImagem> = new BehaviorSubject<BlogImagem>({
     id: '',
     fileExtenstion: '',
     fileName: '',
@@ -20,7 +20,7 @@ export class ImagemService {
   constructor(private http: HttpClient) { }
 
   getAllImagens(): Observable<BlogImagem[]> {
-    return this.http.get<BlogImagem[]>(`${environment.apiBaseUrl}/api/images`);
+    return this.http.get<BlogImagem[]>(`${environment.apiBaseUrl}/api/imagens`);
   }
 
 
@@ -30,15 +30,15 @@ export class ImagemService {
     formData.append('fileName', fileName);
     formData.append('title', title);
 
-    return this.http.post<BlogImagem>(`${environment.apiBaseUrl}/api/images`, formData);
+    return this.http.post<BlogImagem>(`${environment.apiBaseUrl}/api/imagens`, formData);
   }
 
-  selectImagem(image: BlogImagem): void {
-    this.selectedImage.next(image);
+  selectImagem(imagem: BlogImagem): void {
+    this.imagemSelecionada.next(imagem);
   }
 
   onSelectImagem(): Observable<BlogImagem> {
-    return this.selectedImage.asObservable()
+    return this.imagemSelecionada.asObservable()
   }
 
 }
