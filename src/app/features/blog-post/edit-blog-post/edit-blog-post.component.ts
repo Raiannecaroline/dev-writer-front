@@ -20,6 +20,8 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
   categorias$?: Observable<Categorias[]>
   selectCategorias?: string[];
   isImagemSelectorVisible : boolean = false;
+  showAlert: boolean = false;
+  alertMessage: string = '';
 
   routeSubscription?: Subscription;
   updatePostSubscription?: Subscription;
@@ -57,9 +59,8 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
           next: (response) => {
             if (this.model) {
               this.model.ulHandler = response.url;
-              this.isImagemSelectorVisible = false;
+              this.closeImagemSelector();
             }
-            console.log(this.model)
           }
         })
       }
@@ -83,7 +84,11 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
       this.updatePostSubscription = this.blogPostService.updatePosts(this.id, updatePost)
       .subscribe({
         next: (response) => {
+          this.showAlertMessage('Postagem editada com sucesso!');
           this.router.navigateByUrl('/admin/blogPost');
+        },
+        error: (err) => {
+          this.showAlertMessage('Erro ao editar postagem. Tente novamente.');
         }
       });
 
@@ -95,7 +100,11 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
       this.deletePostSubscription = this.blogPostService.deletePost(this.id)
       .subscribe({
         next: (response) => {
+          this.showAlertMessage('Deletado com sucesso!!')
           this.router.navigateByUrl('/admin/blogPost');
+        },
+        error: (err) => {
+          this.showAlertMessage('Erro ao deletar postagem. Tente novamente.');
         }
       })
     }
@@ -103,6 +112,7 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
 
   openImagemSelector(): void {
     this.isImagemSelectorVisible = true;
+    this.showAlertMessage('Seletor de imagem aberto!');
   }
 
   closeImagemSelector(): void {
@@ -115,6 +125,14 @@ export class EditBlogPostComponent implements OnInit, OnDestroy {
     this.getPostSubscription?.unsubscribe();
     this.deletePostSubscription?.unsubscribe();
     this.imagemSelectSubscricption?.unsubscribe();
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
   }
 
 }

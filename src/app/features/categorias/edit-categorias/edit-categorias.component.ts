@@ -16,6 +16,8 @@ export class EditCategoriasComponent implements OnInit, OnDestroy {
   paramsSubscription?: Subscription;
   editCategoriasSubscription?: Subscription;
   categorias?: Categorias;
+  showAlert: boolean = false;
+  alertMessage: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -50,7 +52,11 @@ export class EditCategoriasComponent implements OnInit, OnDestroy {
       this.editCategoriasSubscription = this.categoriaService.updateCategorias(this.id, updateCategoriaRequest)
       .subscribe({
         next: (response) => {
+          this.showAlertMessage('Categoria editada com sucesso!');
           this.router.navigateByUrl('/admin/categorias');
+        },
+        error: (err) => {
+          this.showAlertMessage('Erro ao editar categoria. Tente novamente.');
         }
       })
     }
@@ -70,5 +76,13 @@ export class EditCategoriasComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramsSubscription?.unsubscribe();
     this.editCategoriasSubscription?.unsubscribe();
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000); // Oculta o alerta após 3 segundos
   }
 }

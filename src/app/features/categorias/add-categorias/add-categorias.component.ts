@@ -14,6 +14,9 @@ export class AddCategoriasComponent implements OnDestroy, OnInit {
   model: AddCategoriasRequest;
   private addCategoriaSubscription?: Subscription;
 
+  showAlert: boolean = false;
+  alertMessage: string = '';
+
   constructor(
     private categoriasService: CategoriasService,
     private router: Router
@@ -32,7 +35,11 @@ export class AddCategoriasComponent implements OnDestroy, OnInit {
     this.addCategoriaSubscription = this.categoriasService.addCategoria(this.model)
     .subscribe({
       next: (response) => {
+        this.showAlertMessage('Categoria criada com sucesso!');
         this.router.navigateByUrl('/admin/categorias')
+      },
+      error: (err) => {
+        this.showAlertMessage('Erro ao criar categoria. Tente novamente.');
       }
     })
   }
@@ -50,6 +57,14 @@ export class AddCategoriasComponent implements OnDestroy, OnInit {
     if (savedData) {
       this.model = JSON.parse(savedData);
     }
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
   }
 
 }

@@ -16,6 +16,8 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
 
   model: AddBlogPost;
   isImagemSelectorVisible : boolean = false;
+  showAlert: boolean = false;
+  alertMessage: string = '';
 
   categorias$?: Observable<Categorias[]>
 
@@ -49,7 +51,7 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
         this.model.ulHandler = selectorImagem.url;
         this.closeImagemSelector();
       }
-    })
+    });
   }
 
   onFormEnviar(): void {
@@ -57,7 +59,11 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
     this.blogPostService.createBlogPost(this.model)
       .subscribe({
         next: (response) => {
+          this.showAlertMessage('Postagem criada com sucesso!!');
           this.router.navigateByUrl('/admin/blogPost');
+        },
+        error: (err) => {
+          this.showAlertMessage('Erro ao Criar Postagem! Tente Novamente.');
         }
       });
   }
@@ -65,6 +71,7 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
 
   openImagemSelector(): void {
     this.isImagemSelectorVisible = true;
+    this.showAlertMessage('Seletor de imagem aberto!');
   }
 
   closeImagemSelector(): void {
@@ -76,7 +83,7 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
   }
 
   saveFormData(): void {
-    localStorage.setItem('addBlogPostData', JSON.stringify(this.model))
+    localStorage.setItem('addBlogPostData', JSON.stringify(this.model));
   }
 
   restoreFormData(): void {
@@ -84,5 +91,13 @@ export class AddBlogPostComponent implements OnInit, OnDestroy {
     if (savedData) {
       this.model = JSON.parse(savedData);
     }
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
   }
 }

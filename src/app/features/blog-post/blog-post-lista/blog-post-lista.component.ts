@@ -13,6 +13,9 @@ export class BlogPostListaComponent implements OnInit {
 
   blogPosts$?: Observable<BlogPost[]>
 
+  showAlert: boolean = false;
+  alertMessage: string = '';
+
   constructor(
     private http: HttpClient,
     @Inject(BlogPostService) private blogPostService: BlogPostService
@@ -20,6 +23,15 @@ export class BlogPostListaComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogPosts$ = this.blogPostService.getAllBlogPosts();
+    this.showAlertMessage('Lista de posts carregada com sucesso!');
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000);
   }
 
 }
