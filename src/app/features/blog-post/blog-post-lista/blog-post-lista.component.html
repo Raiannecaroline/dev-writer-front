@@ -7,43 +7,43 @@
     <button type="button" class="btn-close" (click)="showAlert = false" aria-label="Close"></button>
   </div>
 
-  <div class="d-flex justify-content-end mt3">
+  <div class="d-flex justify-content-between mt-3">
+    <button class="btn btn-secondary" (click)="goBack()">Voltar</button>
     <a [routerLink]="['/admin/blogPost/add']" class="btn btn-primary">Adicionar Post</a>
   </div>
 
   <ng-container *ngIf="blogPosts$ | async as blogPosts">
-    <table class="table table-bordered mt-3">
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Breve Descrição</th>
-          <th>É visivel?</th>
-          <th>Categorias</th>
-          <th>Editar</th>
-        </tr>
-      </thead>
+    <div class="table-responsive mt-3">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Título</th>
+            <th>Breve Descrição</th>
+            <th>É visivel?</th>
+            <th>Categorias</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr *ngFor="let blogPost of blogPosts">
-          <td>{{ blogPost.title }}</td>
-          <td>{{ blogPost.content }}</td>
-          <td>{{ blogPost.isVisible }}</td>
-
-          <td>
-            <span *ngFor="let categorie of blogPost.categories">
-              <span class="badge bg-secondary me-2">{{ blogPost.categories }}</span>
-            </span>
-          </td>
-          <td>
-            <a class="btn btn-light" [routerLink]="['/admin/blogPost', blogPost.id]" (click)="showAlertMessage('Redirecionando para editar o post')">
-              <span class="material-symbols-outlined">edit</span>
-            </a>
-          </td>
-        </tr>
-
-      </tbody>
-    </table>
+        <tbody>
+          <tr *ngFor="let blogPost of blogPosts">
+            <td>{{ blogPost.title }}</td>
+            <td>{{ blogPost.content }}</td>
+            <td>{{ blogPost.isVisible }}</td>
+            <td>
+              <span *ngFor="let categorie of blogPost.categories">
+                <span class="badge bg-secondary me-2">{{ categorie.name }}</span>
+              </span>
+            </td>
+            <td>
+              <a class="btn btn-light" [routerLink]="['/admin/blogPost', blogPost.id]" (click)="showAlertMessage('Redirecionando para editar o post')">
+                <span class="material-symbols-outlined">edit</span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ng-container>
-
 
 </div>

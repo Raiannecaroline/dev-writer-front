@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { BlogPostService } from '../services/blog-post.service';
 import { Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-blog-post-lista',
@@ -18,7 +19,8 @@ export class BlogPostListaComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    @Inject(BlogPostService) private blogPostService: BlogPostService
+    @Inject(BlogPostService) private blogPostService: BlogPostService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class BlogPostListaComponent implements OnInit {
     setTimeout(() => {
       this.showAlert = false;
     }, 3000);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
