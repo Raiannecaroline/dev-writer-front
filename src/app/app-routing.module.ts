@@ -8,11 +8,16 @@ import { BlogPostListaComponent } from './features/blog-post/blog-post-lista/blo
 import { AddBlogPostComponent } from './features/blog-post/add-blog-post/add-blog-post.component';
 import { EditBlogPostComponent } from './features/blog-post/edit-blog-post/edit-blog-post.component';
 import { HomeComponent } from './features/public/home/home.component';
+import { DetalhesBlogComponent } from './features/public/detalhes-blog/detalhes-blog.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'blogPost/:url',
+    component: DetalhesBlogComponent
   },
   {
     path: 'admin/categorias',

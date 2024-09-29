@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   blogsPosts$?: Observable<BlogPost[]>;
+  dataLoaded: boolean = false;
+  showAlert: boolean = false;
+  alertMessage: string = '';
 
   constructor(
     private blogPostService: BlogPostService
@@ -18,6 +21,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.blogsPosts$ = this.blogPostService.getAllBlogPosts();
+    this.blogsPosts$.subscribe(() => {
+      setTimeout(() => {
+        this.showAlertMessage('Dados carregados com sucesso!');
+      });
+    });
+  }
+
+  showAlertMessage(message: string): void {
+    this.alertMessage = message;
+    this.showAlert = true;
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 1000);
   }
 
 }
